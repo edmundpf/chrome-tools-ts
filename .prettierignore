@@ -1,0 +1,8 @@
+.gitignore
+.editorconfig
+.prettierignore
+package.json
+package-lock.json
+docs/
+dist/
+js/

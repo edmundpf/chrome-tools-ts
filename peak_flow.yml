@@ -1,0 +1,2 @@
+script:
+  - npm i && npm test

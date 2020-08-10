@@ -1,0 +1,52 @@
+{
+	"env": {
+		"browser": true,
+		"commonjs": true,
+		"es2020": true
+	},
+	"parser": "@typescript-eslint/parser",
+	"plugins": ["@typescript-eslint", "mocha"],
+	"extends": [
+		"eslint:recommended",
+		"plugin:@typescript-eslint/eslint-recommended",
+		"plugin:@typescript-eslint/recommended",
+		"plugin:mocha/recommended",
+		"prettier",
+		"prettier/@typescript-eslint"
+	],
+	"parserOptions": {
+		"ecmaVersion": 11,
+		"project": "./tsconfig.eslint.json"
+	},
+	"ignorePatterns": ["js/*", "dist/*"],
+	"rules": {
+		"semi": "off",
+		"no-tabs": "off",
+		"indent": ["off", "tab"],
+		"global-require": "warn",
+		"no-param-reassign": "warn",
+		"mocha/max-top-level-suites": "warn",
+		"@typescript-eslint/no-explicit-any": "off",
+		"@typescript-eslint/explicit-module-boundary-types": "off",
+		"@typescript-eslint/no-var-requires": "off",
+		"@typescript-eslint/indent": "off",
+		"@typescript-eslint/semi": "off"
+	},
+	"overrides": [
+		{
+			"files": ["**/tests/*"],
+			"rules": {
+				"prefer-arrow-callback": "off",
+				"no-undef": "off"
+			}
+		},
+		{
+			"files": ["transform/*"],
+			"rules": {
+				"eqeqeq": "off",
+				"no-param-reassign": "off",
+				"no-restricted-syntax": "off"
+			}
+		}
+	]
+}
