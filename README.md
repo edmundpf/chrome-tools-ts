@@ -11,6 +11,7 @@ $ npm i -S git+ssh://git@github.com/edmundpf/chrome-tools-ts.git
 ## Usage
 
 ```javascript
+import Chrome from 'chrome-tools-ts'
 ```
 
 ## Documentation
