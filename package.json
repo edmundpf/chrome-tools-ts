@@ -18,7 +18,7 @@
     "lint": "npx eslint .",
     "lint-fix": "npx eslint --fix .",
     "format": "npx prettier --write .",
-    "dev-checkout": "git checkout -b dev &> /dev/null; git checkout dev",
+    "dev-checkout": "git checkout dev",
     "commit": "npm run dev-checkout && tsc && npm run test && git add . && git commit -m",
     "bump-patch": "npm run dev-checkout && npm version patch",
     "bump-minor": "npm run dev-checkout && npm version minor",
