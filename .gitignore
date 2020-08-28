@@ -18,6 +18,3 @@ node_modules
 
 # Env
 .env
-
-# Data
-data/
