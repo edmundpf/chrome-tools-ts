@@ -41,7 +41,7 @@
 
 \+ **new Chrome**(`args`: any): *[Chrome](_utils_chrome_.chrome.md)*
 
-*Defined in [utils/Chrome.ts:19](https://github.com/edmundpf/chrome-tools-ts/blob/0ef8d03/src/utils/Chrome.ts#L19)*
+*Defined in [utils/Chrome.ts:19](https://github.com/edmundpf/chrome-tools-ts/blob/b01aee6/src/utils/Chrome.ts#L19)*
 
 **Parameters:**
 
@@ -57,7 +57,7 @@ Name | Type |
 
 • **browser**? : *any*
 
-*Defined in [utils/Chrome.ts:18](https://github.com/edmundpf/chrome-tools-ts/blob/0ef8d03/src/utils/Chrome.ts#L18)*
+*Defined in [utils/Chrome.ts:18](https://github.com/edmundpf/chrome-tools-ts/blob/b01aee6/src/utils/Chrome.ts#L18)*
 
 ___
 
@@ -65,7 +65,7 @@ ___
 
 • **headless**? : *undefined | false | true*
 
-*Defined in [utils/Chrome.ts:16](https://github.com/edmundpf/chrome-tools-ts/blob/0ef8d03/src/utils/Chrome.ts#L16)*
+*Defined in [utils/Chrome.ts:16](https://github.com/edmundpf/chrome-tools-ts/blob/b01aee6/src/utils/Chrome.ts#L16)*
 
 ___
 
@@ -73,7 +73,7 @@ ___
 
 • **page**? : *any*
 
-*Defined in [utils/Chrome.ts:19](https://github.com/edmundpf/chrome-tools-ts/blob/0ef8d03/src/utils/Chrome.ts#L19)*
+*Defined in [utils/Chrome.ts:19](https://github.com/edmundpf/chrome-tools-ts/blob/b01aee6/src/utils/Chrome.ts#L19)*
 
 ___
 
@@ -81,7 +81,7 @@ ___
 
 • **path**? : *string | null*
 
-*Defined in [utils/Chrome.ts:15](https://github.com/edmundpf/chrome-tools-ts/blob/0ef8d03/src/utils/Chrome.ts#L15)*
+*Defined in [utils/Chrome.ts:15](https://github.com/edmundpf/chrome-tools-ts/blob/b01aee6/src/utils/Chrome.ts#L15)*
 
 ___
 
@@ -89,7 +89,7 @@ ___
 
 • **slow**? : *undefined | false | true*
 
-*Defined in [utils/Chrome.ts:17](https://github.com/edmundpf/chrome-tools-ts/blob/0ef8d03/src/utils/Chrome.ts#L17)*
+*Defined in [utils/Chrome.ts:17](https://github.com/edmundpf/chrome-tools-ts/blob/b01aee6/src/utils/Chrome.ts#L17)*
 
 ## Methods
 
@@ -97,7 +97,7 @@ ___
 
 ▸ **buttonClick**(`selector`: any): *Promise‹boolean›*
 
-*Defined in [utils/Chrome.ts:205](https://github.com/edmundpf/chrome-tools-ts/blob/0ef8d03/src/utils/Chrome.ts#L205)*
+*Defined in [utils/Chrome.ts:205](https://github.com/edmundpf/chrome-tools-ts/blob/b01aee6/src/utils/Chrome.ts#L205)*
 
 **Parameters:**
 
@@ -113,7 +113,7 @@ ___
 
 ▸ **checkExists**(`selector`: any): *Promise‹undefined | false | true›*
 
-*Defined in [utils/Chrome.ts:220](https://github.com/edmundpf/chrome-tools-ts/blob/0ef8d03/src/utils/Chrome.ts#L220)*
+*Defined in [utils/Chrome.ts:220](https://github.com/edmundpf/chrome-tools-ts/blob/b01aee6/src/utils/Chrome.ts#L220)*
 
 **Parameters:**
 
@@ -129,7 +129,7 @@ ___
 
 ▸ **closeBrowser**(): *Promise‹boolean›*
 
-*Defined in [utils/Chrome.ts:85](https://github.com/edmundpf/chrome-tools-ts/blob/0ef8d03/src/utils/Chrome.ts#L85)*
+*Defined in [utils/Chrome.ts:85](https://github.com/edmundpf/chrome-tools-ts/blob/b01aee6/src/utils/Chrome.ts#L85)*
 
 **Returns:** *Promise‹boolean›*
 
@@ -139,7 +139,7 @@ ___
 
 ▸ **evalAttribute**(`selector`: any, `attr`: any, `single`: any): *Promise‹any›*
 
-*Defined in [utils/Chrome.ts:251](https://github.com/edmundpf/chrome-tools-ts/blob/0ef8d03/src/utils/Chrome.ts#L251)*
+*Defined in [utils/Chrome.ts:251](https://github.com/edmundpf/chrome-tools-ts/blob/b01aee6/src/utils/Chrome.ts#L251)*
 
 **Parameters:**
 
@@ -157,7 +157,7 @@ ___
 
 ▸ **getInnerText**(`elements`: any): *any[]*
 
-*Defined in [utils/Chrome.ts:121](https://github.com/edmundpf/chrome-tools-ts/blob/0ef8d03/src/utils/Chrome.ts#L121)*
+*Defined in [utils/Chrome.ts:121](https://github.com/edmundpf/chrome-tools-ts/blob/b01aee6/src/utils/Chrome.ts#L121)*
 
 **Parameters:**
 
@@ -173,7 +173,7 @@ ___
 
 ▸ **getText**(`selector`: any): *Promise‹any›*
 
-*Defined in [utils/Chrome.ts:236](https://github.com/edmundpf/chrome-tools-ts/blob/0ef8d03/src/utils/Chrome.ts#L236)*
+*Defined in [utils/Chrome.ts:236](https://github.com/edmundpf/chrome-tools-ts/blob/b01aee6/src/utils/Chrome.ts#L236)*
 
 **Parameters:**
 
@@ -189,7 +189,7 @@ ___
 
 ▸ **launchBrowser**(): *Promise‹boolean›*
 
-*Defined in [utils/Chrome.ts:58](https://github.com/edmundpf/chrome-tools-ts/blob/0ef8d03/src/utils/Chrome.ts#L58)*
+*Defined in [utils/Chrome.ts:58](https://github.com/edmundpf/chrome-tools-ts/blob/b01aee6/src/utils/Chrome.ts#L58)*
 
 **Returns:** *Promise‹boolean›*
 
@@ -199,7 +199,7 @@ ___
 
 ▸ **navigate**(`url`: any): *Promise‹boolean›*
 
-*Defined in [utils/Chrome.ts:107](https://github.com/edmundpf/chrome-tools-ts/blob/0ef8d03/src/utils/Chrome.ts#L107)*
+*Defined in [utils/Chrome.ts:107](https://github.com/edmundpf/chrome-tools-ts/blob/b01aee6/src/utils/Chrome.ts#L107)*
 
 **Parameters:**
 
@@ -215,7 +215,7 @@ ___
 
 ▸ **selectOption**(`selector`: any, `optionSelector`: any): *Promise‹boolean›*
 
-*Defined in [utils/Chrome.ts:179](https://github.com/edmundpf/chrome-tools-ts/blob/0ef8d03/src/utils/Chrome.ts#L179)*
+*Defined in [utils/Chrome.ts:179](https://github.com/edmundpf/chrome-tools-ts/blob/b01aee6/src/utils/Chrome.ts#L179)*
 
 **Parameters:**
 
@@ -232,7 +232,7 @@ ___
 
 ▸ **setCheckedState**(`selector`: any, `checked`: any): *Promise‹boolean›*
 
-*Defined in [utils/Chrome.ts:147](https://github.com/edmundpf/chrome-tools-ts/blob/0ef8d03/src/utils/Chrome.ts#L147)*
+*Defined in [utils/Chrome.ts:147](https://github.com/edmundpf/chrome-tools-ts/blob/b01aee6/src/utils/Chrome.ts#L147)*
 
 **Parameters:**
 
@@ -249,7 +249,7 @@ ___
 
 ▸ **typeInput**(`selector`: any, `text`: any): *Promise‹boolean›*
 
-*Defined in [utils/Chrome.ts:131](https://github.com/edmundpf/chrome-tools-ts/blob/0ef8d03/src/utils/Chrome.ts#L131)*
+*Defined in [utils/Chrome.ts:131](https://github.com/edmundpf/chrome-tools-ts/blob/b01aee6/src/utils/Chrome.ts#L131)*
 
 **Parameters:**
 
@@ -266,7 +266,7 @@ ___
 
 ▸ **wait**(`selector`: any): *Promise‹any›*
 
-*Defined in [utils/Chrome.ts:98](https://github.com/edmundpf/chrome-tools-ts/blob/0ef8d03/src/utils/Chrome.ts#L98)*
+*Defined in [utils/Chrome.ts:98](https://github.com/edmundpf/chrome-tools-ts/blob/b01aee6/src/utils/Chrome.ts#L98)*
 
 **Parameters:**
 

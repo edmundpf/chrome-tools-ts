@@ -18,4 +18,4 @@
 
 ### ▪ **defaults**: *object*
 
-*Defined in [utils/Chrome.ts:8](https://github.com/edmundpf/chrome-tools-ts/blob/0ef8d03/src/utils/Chrome.ts#L8)*
+*Defined in [utils/Chrome.ts:8](https://github.com/edmundpf/chrome-tools-ts/blob/b01aee6/src/utils/Chrome.ts#L8)*
