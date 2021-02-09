@@ -2,6 +2,8 @@
 
 # Class: Chrome
 
+Chrome Class
+
 ## Hierarchy
 
 * **Chrome**
@@ -14,11 +16,13 @@
 
 ### Properties
 
+* [blockAds](_utils_chrome_.chrome.md#optional-blockads)
 * [browser](_utils_chrome_.chrome.md#optional-browser)
 * [headless](_utils_chrome_.chrome.md#optional-headless)
 * [page](_utils_chrome_.chrome.md#optional-page)
 * [path](_utils_chrome_.chrome.md#optional-path)
 * [slow](_utils_chrome_.chrome.md#optional-slow)
+* [useLocalChrome](_utils_chrome_.chrome.md#optional-uselocalchrome)
 
 ### Methods
 
@@ -39,25 +43,35 @@
 
 ###  constructor
 
-\+ **new Chrome**(`args`: any): *[Chrome](_utils_chrome_.chrome.md)*
+\+ **new Chrome**(`args?`: [ChromeArgs](../modules/_utils_chrome_.md#chromeargs)): *[Chrome](_utils_chrome_.chrome.md)*
 
-*Defined in [utils/Chrome.ts:19](https://github.com/edmundpf/chrome-tools-ts/blob/b01aee6/src/utils/Chrome.ts#L19)*
+*Defined in [utils/Chrome.ts:33](https://github.com/edmundpf/chrome-tools-ts/blob/e49a4fc/src/utils/Chrome.ts#L33)*
+
+Constructor
 
 **Parameters:**
 
 Name | Type |
 ------ | ------ |
-`args` | any |
+`args?` | [ChromeArgs](../modules/_utils_chrome_.md#chromeargs) |
 
 **Returns:** *[Chrome](_utils_chrome_.chrome.md)*
 
 ## Properties
 
+### `Optional` blockAds
+
+• **blockAds**? : *undefined | false | true*
+
+*Defined in [utils/Chrome.ts:31](https://github.com/edmundpf/chrome-tools-ts/blob/e49a4fc/src/utils/Chrome.ts#L31)*
+
+___
+
 ### `Optional` browser
 
 • **browser**? : *any*
 
-*Defined in [utils/Chrome.ts:18](https://github.com/edmundpf/chrome-tools-ts/blob/b01aee6/src/utils/Chrome.ts#L18)*
+*Defined in [utils/Chrome.ts:32](https://github.com/edmundpf/chrome-tools-ts/blob/e49a4fc/src/utils/Chrome.ts#L32)*
 
 ___
 
@@ -65,7 +79,7 @@ ___
 
 • **headless**? : *undefined | false | true*
 
-*Defined in [utils/Chrome.ts:16](https://github.com/edmundpf/chrome-tools-ts/blob/b01aee6/src/utils/Chrome.ts#L16)*
+*Defined in [utils/Chrome.ts:29](https://github.com/edmundpf/chrome-tools-ts/blob/e49a4fc/src/utils/Chrome.ts#L29)*
 
 ___
 
@@ -73,15 +87,15 @@ ___
 
 • **page**? : *any*
 
-*Defined in [utils/Chrome.ts:19](https://github.com/edmundpf/chrome-tools-ts/blob/b01aee6/src/utils/Chrome.ts#L19)*
+*Defined in [utils/Chrome.ts:33](https://github.com/edmundpf/chrome-tools-ts/blob/e49a4fc/src/utils/Chrome.ts#L33)*
 
 ___
 
 ### `Optional` path
 
-• **path**? : *string | null*
+• **path**? : *undefined | string*
 
-*Defined in [utils/Chrome.ts:15](https://github.com/edmundpf/chrome-tools-ts/blob/b01aee6/src/utils/Chrome.ts#L15)*
+*Defined in [utils/Chrome.ts:27](https://github.com/edmundpf/chrome-tools-ts/blob/e49a4fc/src/utils/Chrome.ts#L27)*
 
 ___
 
@@ -89,21 +103,31 @@ ___
 
 • **slow**? : *undefined | false | true*
 
-*Defined in [utils/Chrome.ts:17](https://github.com/edmundpf/chrome-tools-ts/blob/b01aee6/src/utils/Chrome.ts#L17)*
+*Defined in [utils/Chrome.ts:30](https://github.com/edmundpf/chrome-tools-ts/blob/e49a4fc/src/utils/Chrome.ts#L30)*
+
+___
+
+### `Optional` useLocalChrome
+
+• **useLocalChrome**? : *undefined | false | true*
+
+*Defined in [utils/Chrome.ts:28](https://github.com/edmundpf/chrome-tools-ts/blob/e49a4fc/src/utils/Chrome.ts#L28)*
 
 ## Methods
 
 ###  buttonClick
 
-▸ **buttonClick**(`selector`: any): *Promise‹boolean›*
+▸ **buttonClick**(`selector`: string): *Promise‹boolean›*
 
-*Defined in [utils/Chrome.ts:205](https://github.com/edmundpf/chrome-tools-ts/blob/b01aee6/src/utils/Chrome.ts#L205)*
+*Defined in [utils/Chrome.ts:233](https://github.com/edmundpf/chrome-tools-ts/blob/e49a4fc/src/utils/Chrome.ts#L233)*
+
+Click Button Selector
 
 **Parameters:**
 
 Name | Type |
 ------ | ------ |
-`selector` | any |
+`selector` | string |
 
 **Returns:** *Promise‹boolean›*
 
@@ -111,15 +135,17 @@ ___
 
 ###  checkExists
 
-▸ **checkExists**(`selector`: any): *Promise‹undefined | false | true›*
+▸ **checkExists**(`selector`: string): *Promise‹undefined | false | true›*
 
-*Defined in [utils/Chrome.ts:220](https://github.com/edmundpf/chrome-tools-ts/blob/b01aee6/src/utils/Chrome.ts#L220)*
+*Defined in [utils/Chrome.ts:250](https://github.com/edmundpf/chrome-tools-ts/blob/e49a4fc/src/utils/Chrome.ts#L250)*
+
+Check if Selector Exists
 
 **Parameters:**
 
 Name | Type |
 ------ | ------ |
-`selector` | any |
+`selector` | string |
 
 **Returns:** *Promise‹undefined | false | true›*
 
@@ -129,7 +155,9 @@ ___
 
 ▸ **closeBrowser**(): *Promise‹boolean›*
 
-*Defined in [utils/Chrome.ts:85](https://github.com/edmundpf/chrome-tools-ts/blob/b01aee6/src/utils/Chrome.ts#L85)*
+*Defined in [utils/Chrome.ts:109](https://github.com/edmundpf/chrome-tools-ts/blob/e49a4fc/src/utils/Chrome.ts#L109)*
+
+Close Browser
 
 **Returns:** *Promise‹boolean›*
 
@@ -137,17 +165,19 @@ ___
 
 ###  evalAttribute
 
-▸ **evalAttribute**(`selector`: any, `attr`: any, `single`: any): *Promise‹any›*
+▸ **evalAttribute**(`selector`: string, `attr`: string, `single`: boolean): *Promise‹any›*
 
-*Defined in [utils/Chrome.ts:251](https://github.com/edmundpf/chrome-tools-ts/blob/b01aee6/src/utils/Chrome.ts#L251)*
+*Defined in [utils/Chrome.ts:285](https://github.com/edmundpf/chrome-tools-ts/blob/e49a4fc/src/utils/Chrome.ts#L285)*
+
+Evaluate Attribute of Selector
 
 **Parameters:**
 
-Name | Type |
------- | ------ |
-`selector` | any |
-`attr` | any |
-`single` | any |
+Name | Type | Default |
+------ | ------ | ------ |
+`selector` | string | - |
+`attr` | string | - |
+`single` | boolean | false |
 
 **Returns:** *Promise‹any›*
 
@@ -155,15 +185,17 @@ ___
 
 ###  getInnerText
 
-▸ **getInnerText**(`elements`: any): *any[]*
+▸ **getInnerText**(`elements`: Array‹any›): *any[]*
 
-*Defined in [utils/Chrome.ts:121](https://github.com/edmundpf/chrome-tools-ts/blob/b01aee6/src/utils/Chrome.ts#L121)*
+*Defined in [utils/Chrome.ts:151](https://github.com/edmundpf/chrome-tools-ts/blob/e49a4fc/src/utils/Chrome.ts#L151)*
+
+Get Inner Text of HTML Elements
 
 **Parameters:**
 
 Name | Type |
 ------ | ------ |
-`elements` | any |
+`elements` | Array‹any› |
 
 **Returns:** *any[]*
 
@@ -171,15 +203,17 @@ ___
 
 ###  getText
 
-▸ **getText**(`selector`: any): *Promise‹any›*
+▸ **getText**(`selector`: string): *Promise‹any›*
 
-*Defined in [utils/Chrome.ts:236](https://github.com/edmundpf/chrome-tools-ts/blob/b01aee6/src/utils/Chrome.ts#L236)*
+*Defined in [utils/Chrome.ts:268](https://github.com/edmundpf/chrome-tools-ts/blob/e49a4fc/src/utils/Chrome.ts#L268)*
+
+Get Text from Selector
 
 **Parameters:**
 
 Name | Type |
 ------ | ------ |
-`selector` | any |
+`selector` | string |
 
 **Returns:** *Promise‹any›*
 
@@ -189,7 +223,9 @@ ___
 
 ▸ **launchBrowser**(): *Promise‹boolean›*
 
-*Defined in [utils/Chrome.ts:58](https://github.com/edmundpf/chrome-tools-ts/blob/b01aee6/src/utils/Chrome.ts#L58)*
+*Defined in [utils/Chrome.ts:78](https://github.com/edmundpf/chrome-tools-ts/blob/e49a4fc/src/utils/Chrome.ts#L78)*
+
+Launch Browser
 
 **Returns:** *Promise‹boolean›*
 
@@ -197,15 +233,17 @@ ___
 
 ###  navigate
 
-▸ **navigate**(`url`: any): *Promise‹boolean›*
+▸ **navigate**(`url`: string): *Promise‹boolean›*
 
-*Defined in [utils/Chrome.ts:107](https://github.com/edmundpf/chrome-tools-ts/blob/b01aee6/src/utils/Chrome.ts#L107)*
+*Defined in [utils/Chrome.ts:135](https://github.com/edmundpf/chrome-tools-ts/blob/e49a4fc/src/utils/Chrome.ts#L135)*
+
+Navigate to URL
 
 **Parameters:**
 
 Name | Type |
 ------ | ------ |
-`url` | any |
+`url` | string |
 
 **Returns:** *Promise‹boolean›*
 
@@ -213,16 +251,18 @@ ___
 
 ###  selectOption
 
-▸ **selectOption**(`selector`: any, `optionSelector`: any): *Promise‹boolean›*
+▸ **selectOption**(`selector`: string, `optionSelector`: string): *Promise‹boolean›*
 
-*Defined in [utils/Chrome.ts:179](https://github.com/edmundpf/chrome-tools-ts/blob/b01aee6/src/utils/Chrome.ts#L179)*
+*Defined in [utils/Chrome.ts:209](https://github.com/edmundpf/chrome-tools-ts/blob/e49a4fc/src/utils/Chrome.ts#L209)*
+
+Select Option Selector from List Selector
 
 **Parameters:**
 
 Name | Type |
 ------ | ------ |
-`selector` | any |
-`optionSelector` | any |
+`selector` | string |
+`optionSelector` | string |
 
 **Returns:** *Promise‹boolean›*
 
@@ -230,16 +270,18 @@ ___
 
 ###  setCheckedState
 
-▸ **setCheckedState**(`selector`: any, `checked`: any): *Promise‹boolean›*
+▸ **setCheckedState**(`selector`: string, `checked`: boolean): *Promise‹boolean›*
 
-*Defined in [utils/Chrome.ts:147](https://github.com/edmundpf/chrome-tools-ts/blob/b01aee6/src/utils/Chrome.ts#L147)*
+*Defined in [utils/Chrome.ts:181](https://github.com/edmundpf/chrome-tools-ts/blob/e49a4fc/src/utils/Chrome.ts#L181)*
+
+Set Checked State of Selector
 
 **Parameters:**
 
-Name | Type |
------- | ------ |
-`selector` | any |
-`checked` | any |
+Name | Type | Default |
+------ | ------ | ------ |
+`selector` | string | - |
+`checked` | boolean | true |
 
 **Returns:** *Promise‹boolean›*
 
@@ -247,16 +289,18 @@ ___
 
 ###  typeInput
 
-▸ **typeInput**(`selector`: any, `text`: any): *Promise‹boolean›*
+▸ **typeInput**(`selector`: string, `text`: string): *Promise‹boolean›*
 
-*Defined in [utils/Chrome.ts:131](https://github.com/edmundpf/chrome-tools-ts/blob/b01aee6/src/utils/Chrome.ts#L131)*
+*Defined in [utils/Chrome.ts:163](https://github.com/edmundpf/chrome-tools-ts/blob/e49a4fc/src/utils/Chrome.ts#L163)*
+
+Type Input in Selector
 
 **Parameters:**
 
 Name | Type |
 ------ | ------ |
-`selector` | any |
-`text` | any |
+`selector` | string |
+`text` | string |
 
 **Returns:** *Promise‹boolean›*
 
@@ -264,14 +308,16 @@ ___
 
 ###  wait
 
-▸ **wait**(`selector`: any): *Promise‹any›*
+▸ **wait**(`selector`: string): *Promise‹any›*
 
-*Defined in [utils/Chrome.ts:98](https://github.com/edmundpf/chrome-tools-ts/blob/b01aee6/src/utils/Chrome.ts#L98)*
+*Defined in [utils/Chrome.ts:124](https://github.com/edmundpf/chrome-tools-ts/blob/e49a4fc/src/utils/Chrome.ts#L124)*
+
+Wait for Selector
 
 **Parameters:**
 
 Name | Type |
 ------ | ------ |
-`selector` | any |
+`selector` | string |
 
 **Returns:** *Promise‹any›*

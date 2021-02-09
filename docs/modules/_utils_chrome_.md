@@ -8,14 +8,38 @@
 
 * [Chrome](../classes/_utils_chrome_.chrome.md)
 
-### Object literals
+### Type aliases
 
-* [defaults](_utils_chrome_.md#let-defaults)
+* [ChromeArgs](_utils_chrome_.md#chromeargs)
 
-## Object literals
+### Variables
 
-### `Let` defaults
+* [p](_utils_chrome_.md#const-p)
 
-### ▪ **defaults**: *object*
+## Type aliases
 
-*Defined in [utils/Chrome.ts:8](https://github.com/edmundpf/chrome-tools-ts/blob/b01aee6/src/utils/Chrome.ts#L8)*
+###  ChromeArgs
+
+Ƭ **ChromeArgs**: *object*
+
+*Defined in [utils/Chrome.ts:12](https://github.com/edmundpf/chrome-tools-ts/blob/e49a4fc/src/utils/Chrome.ts#L12)*
+
+#### Type declaration:
+
+* **blockAds**? : *undefined | false | true*
+
+* **headless**? : *undefined | false | true*
+
+* **path**? : *undefined | string*
+
+* **slow**? : *undefined | false | true*
+
+* **useLocalChrome**? : *undefined | false | true*
+
+## Variables
+
+### `Const` p
+
+• **p**: *Print‹›* = new Print()
+
+*Defined in [utils/Chrome.ts:8](https://github.com/edmundpf/chrome-tools-ts/blob/e49a4fc/src/utils/Chrome.ts#L8)*
