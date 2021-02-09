@@ -1,91 +1,115 @@
-import p from 'print-tools-js'
-import pup from 'puppeteer-core'
-import defaultJson from '../data/defaults.json'
-import path from 'path'
+import puppet from 'puppeteer'
+import Print from '@edmundpf/print-ts'
+import defaults from '../data/defaults.json'
+import { resolve } from 'path'
 
-// Variables
+// Init
 
-let defaults = { ...defaultJson }
+const p = new Print()
 
-//::: Chrome Class :::
+// Chrome Args Type
+
+type ChromeArgs = {
+	path?: string
+	useLocalChrome?: boolean
+	headless?: boolean
+	slow?: boolean
+	blockAds?: boolean
+}
+
+/**
+ * Chrome Class
+ */
 
 export default class Chrome {
 	// Properties
 
-	path?: string | null
+	path?: string
+	useLocalChrome?: boolean
 	headless?: boolean
 	slow?: boolean
+	blockAds?: boolean
 	browser?: any
 	page?: any
 
-	// Constructor
+	/**
+	 * Constructor
+	 */
 
-	constructor(args) {
-		if (defaults.useLocalChrome) {
-			if (process.platform === 'win32') {
-				this.path = path.resolve(
-					'C:/Program Files (x86)/Google/Chrome/Application/chrome.exe'
-				)
-			} else {
-				this.path = path.resolve(
-					'/mnt/c/Program Files (x86)/Google/Chrome/Application/chrome.exe'
-				)
-			}
-		} else {
-			this.path = null
+	constructor(args?: ChromeArgs) {
+		// Defaults
+
+		const opts = {
+			path: undefined,
+			useLocalChrome: true,
+			headless: true,
+			slow: false,
+			blockAds: false,
+			browser: undefined,
+			page: undefined,
+			...args,
 		}
-		this.headless = true
-		this.slow = false
-		if (args != null) {
-			if (args.headless != null) {
-				this.headless = args.headless
-			}
-			if (args.slow != null) {
-				this.slow = args.slow
-			}
-			if (args.path != null) {
-				this.path = args.path
-			}
-			defaults = {
-				...defaults,
-				...args,
+		this.path = opts.path
+		this.useLocalChrome = opts.useLocalChrome
+		this.headless = opts.headless
+		this.slow = opts.slow
+		this.blockAds = opts.blockAds
+		this.browser = undefined
+		this.page = undefined
+
+		// Set Chrome Path
+
+		if (this.useLocalChrome && !this.path) {
+			const setPath = (key: string) => (this.path = resolve(defaults[key]))
+			if (process.platform == 'win32') {
+				setPath('windowsChromePath')
+			} else if (process.platform == 'linux') {
+				setPath('linuxChromePath')
+			} else {
+				setPath('wslChromePath')
 			}
 		}
 	}
 
-	//: Launch Browser
+	/**
+	 * Launch Browser
+	 */
 
 	async launchBrowser() {
 		try {
-			this.browser = await pup.launch({
-				headless: this.headless,
-				defaultViewport: null,
-				slowMo: this.slow ? defaults.slowMo : null,
-				executablePath: this.path ? this.path : null,
-				args: [
-					'--no-sandbox',
-					'--disable-setuid-sandbox',
+			let chromeArgs = ['--no-sandbox', '--disable-setuid-sandbox']
+			if (this.blockAds) {
+				chromeArgs = [
+					...chromeArgs,
 					`--disable-extensions-except=${defaults.uBlockPath}`,
 					`--load-extension=${defaults.uBlockPath}`,
-				],
+				]
+			}
+			this.browser = await puppet.launch({
+				headless: this.headless,
+				slowMo: this.slow ? defaults.slowMo : undefined,
+				executablePath: this.path ? this.path : undefined,
+				args: chromeArgs,
 			})
 			p.success(
 				`Launched chrome: headless - ${this.headless} | slow motion - ${this.slow}`
 			)
 			return true
 		} catch (error) {
-			console.error(error)
 			p.error('Could not launch browser')
+			p.error(error)
 			return false
 		}
 	}
 
-	//: Close Browser
+	/**
+	 * Close Browser
+	 */
 
 	async closeBrowser() {
 		try {
 			await this.browser.close()
-			p.warning('Closed chrome')
+			p.warn('Closed chrome')
 			return true
 		} catch (error) {
 			p.error('Could not close browser')
@@ -93,18 +117,22 @@ export default class Chrome {
 		}
 	}
 
-	//: Wait for Selector
+	/**
+	 * Wait for Selector
+	 */
 
-	async wait(selector) {
+	async wait(selector: string) {
 		return await this.page.waitForSelector(selector, {
 			timeout: defaults.timeout * 1000,
 			visible: true,
 		})
 	}
 
-	//: Navigate to Page
+	/**
+	 * Navigate to URL
+	 */
 
-	async navigate(url) {
+	async navigate(url: string) {
 		try {
 			this.page = (await this.browser.pages())[0]
 			await this.page.goto(url, { timeout: defaults.timeout * 1000 })
@@ -116,9 +144,11 @@ export default class Chrome {
 		}
 	}
 
-	// Get Inner Text of HTML elements
+	/**
+	 * Get Inner Text of HTML Elements
+	 */
 
-	getInnerText(elements) {
+	getInnerText(elements: Array<any>) {
 		const text: Array<any> = []
 		for (const element of elements) {
 			text.push(element.innerText)
@@ -126,9 +156,11 @@ export default class Chrome {
 		return text
 	}
 
-	//: Input
+	/**
+	 * Type Input in Selector
+	 */
 
-	async typeInput(selector, text) {
+	async typeInput(selector: string, text: string) {
 		try {
 			await this.wait(selector)
 			await this.page.focus(selector)
@@ -142,12 +174,11 @@ export default class Chrome {
 		}
 	}
 
-	//: Checkbox set checked
+	/**
+	 * Set Checked State of Selector
+	 */
 
-	async setCheckedState(selector, checked) {
-		if (checked == null) {
-			checked = true
-		}
+	async setCheckedState(selector: string, checked = true) {
 		try {
 			await this.wait(selector)
 			const checkbox = await this.page.$(selector)
@@ -158,51 +189,48 @@ export default class Chrome {
 				p.success('Checkbox clicked')
 				checkState = await (await checkbox.getProperty('checked')).jsonValue()
 			}
-			if (checked === checkState) {
+			if (checked == checkState) {
 				p.success(`Checked state: ${checkState}`)
+				return true
 			} else {
 				p.error(`Checked state: ${checkState}`)
+				return false
 			}
-			return true
 		} catch (error) {
-			if (checked) {
-				p.error(`Could not check ${selector}`)
-			} else {
-				p.error(`Could not uncheck ${selector}`)
-			}
+			p.error(`Could not ${checked ? 'check' : 'uncheck'} ${selector}`)
 			return false
 		}
 	}
 
-	//: Select Option
+	/**
+	 * Select Option Selector from List Selector
+	 */
 
-	async selectOption(selector, optionSelector) {
+	async selectOption(selector: string, optionSelector: string) {
 		try {
 			await this.wait(selector)
-			const optionValue = await this.page.$eval(
-				optionSelector,
-				(optionEle) => optionEle.value
-			)
+			const getValue = (ele) => ele.value
+			const optionValue = await this.page.$eval(optionSelector, getValue)
 			await this.page.select(selector, optionValue)
-			let selectValue = await this.page.$eval(
-				selector,
-				(selectEle) => selectEle.value
-			)
-			if ((selectValue = optionValue)) {
+			const selectValue = await this.page.$eval(selector, getValue)
+			if (selectValue == optionValue) {
 				p.success(`Option selected: ${selectValue}`)
+				return true
 			} else {
 				p.error(`Could not select option for ${selector}`)
+				return false
 			}
-			return true
 		} catch (error) {
 			p.error(`Could not select option for ${selector}`)
 			return false
 		}
 	}
 
-	//: Button Click
+	/**
+	 * Click Button Selector
+	 */
 
-	async buttonClick(selector) {
+	async buttonClick(selector: string) {
 		try {
 			await this.wait(selector)
 			const button = await this.page.$(selector)
@@ -215,12 +243,14 @@ export default class Chrome {
 		}
 	}
 
-	//: Check if selector exists
+	/**
+	 * Check if Selector Exists
+	 */
 
-	async checkExists(selector) {
+	async checkExists(selector: string) {
 		try {
 			const element = await this.wait(selector)
-			if (element != null) {
+			if (element) {
 				p.success(`${selector} found`)
 				return true
 			}
@@ -231,9 +261,11 @@ export default class Chrome {
 		}
 	}
 
-	//: Get Element Text
+	/**
+	 * Get Text from Selector
+	 */
 
-	async getText(selector) {
+	async getText(selector: string) {
 		try {
 			await this.wait(selector)
 			const element = await this.page.$(selector)
@@ -246,12 +278,11 @@ export default class Chrome {
 		}
 	}
 
-	//: Eval Attribute
+	/**
+	 * Evaluate Attribute of Selector
+	 */
 
-	async evalAttribute(selector, attr, single) {
-		if (single == null) {
-			single = false
-		}
+	async evalAttribute(selector: string, attr: string, single = false) {
 		try {
 			let values: Array<any> = []
 			await this.wait(selector)
@@ -267,14 +298,9 @@ export default class Chrome {
 				attr
 			)
 			p.success(`Fetched ${selector} ${attr}`)
-			if (single) {
-				return values[0]
-			} else {
-				return values
-			}
+			return single ? values[0] : values
 		} catch (error) {
 			p.error(`Could not get ${selector} ${attr}`)
-			console.error(error)
 			return false
 		}
 	}

@@ -1,6 +1,8 @@
 {
 	"timeout": 8,
 	"slowMo": 50,
-	"useLocalChrome": true,
-	"uBlockPath": "C:\\Documents and Settings\\EPfeil\\Local Settings\\Application Data\\Google\\Chrome\\User Data\\Default\\Extensions\\cjpalhdlnbpafiamejdnhcphjbkeiagm\\1.28.4_0"
+	"linuxChromePath": "/usr/bin/google-chrome-stable",
+	"wslChromePath": "/mnt/c/Program Files (x86)/Google/Chrome/Application/chrome.exe",
+	"windowsChromePath": "C:/Program Files (x86)/Google/Chrome/Application/chrome.exe",
+	"uBlockPath": "C:/Documents and Settings/EPfeil/Local Settings/Application Data/Google/Chrome/User Data/Default/Extensions/cjpalhdlnbpafiamejdnhcphjbkeiagm/1.28.4_0"
 }

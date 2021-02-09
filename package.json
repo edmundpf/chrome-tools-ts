@@ -74,11 +74,11 @@
     "prettier": "*",
     "typedoc": "*",
     "typedoc-plugin-markdown": "*",
-    "typescript": "*"
+    "typescript": "^4.1.3"
   },
   "private": true,
   "dependencies": {
-    "print-tools-js": "^1.2.0",
-    "puppeteer-core": "^5.2.1"
+    "@edmundpf/print-ts": "^1.0.2",
+    "puppeteer": "^7.0.1"
   }
 }
